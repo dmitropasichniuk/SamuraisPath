@@ -9,7 +9,7 @@ const Post = (props) =>{
        {props.massage}
      </div>
      <div>
-       {props.likeCounter}
+       {props.likeCounter} likes
      </div>
    </div>
  );
