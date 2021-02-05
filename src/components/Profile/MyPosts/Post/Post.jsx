@@ -6,7 +6,7 @@ const Post = (props) =>{
    <div className={styles.item}>
      <div>
        <img src="https://pm1.narvii.com/6825/d74beddc6e5570160f786213f68d740dc0c30834v2_00.jpg"></img>
-       {props.massage}
+       {props.posts}
      </div>
      <div>
        {props.likeCounter} likes

@@ -15,7 +15,7 @@ const MyPosts = (props) =>{
        </div>
      </div>
      <div className={style.item}>
-       {props.posts.map( post =>  <Post massage={post.message} likeCounter={post.likeCounter} />)}
+       {props.state.posts.map( post =>  <Post massage={post.message} likeCounter={post.likeCounter} />)}
      </div>
    </div>
  );
