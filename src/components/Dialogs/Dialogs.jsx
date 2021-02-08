@@ -5,11 +5,16 @@ import Message from "./Message/Message"
 
 const Dialogs = (props) =>{
 
-let newSms = React.createRef();
+  let newMessageElement = React.createRef();
 
-let showNewSms = () => {
-  alert(newSms.current.value)
-};
+  let addMessage = () => {
+    props.addMessage();
+  };
+
+  let onChangeMessage = () => {
+    let message = newMessageElement.current.value;
+    props.updateMessage(message)
+  };
 
     return (
       <div className={style.dialogs}>
@@ -24,10 +29,14 @@ let showNewSms = () => {
           ))}
           <div>
             <div>
-              <textarea ref={newSms}></textarea>
+              <textarea
+                ref={newMessageElement}
+                onChange={onChangeMessage}
+                value={props.state.newMessageText}
+              />
             </div>
             <div>
-              <button onClick={showNewSms}>Add sms</button>
+              <button onClick={addMessage}>Add sms</button>
             </div>
           </div>
         </div>

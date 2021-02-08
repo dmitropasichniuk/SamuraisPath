@@ -9,11 +9,13 @@ let state = {
       },
       { message: "My second massage!", likeCounter: "10" },
     ],
-    newPostText: "hui sobaky",
+    newPostText: "Hui sobaky",
   },
 
   dialogsPage: {
     messages: [{ message: "Hi how are u pidr" }, { message: "Little biches" }],
+
+    newMessageText :"zalupa",
 
     dialogs: [
       { id: 1, name: "Sucka Valera" },
@@ -26,7 +28,7 @@ export let addPost = () =>{
 
   let newPost = {
     message: state.profilePage.newPostText,
-    likeCounter: 1233,
+    likeCounter: 123,
   }
 
   state.profilePage.posts.push(newPost);
@@ -40,6 +42,21 @@ export let updateText = (newText) =>{
   renderEntireTree(state);
 }
 
+export let addMessage = () =>{
 
+  let newMessage = {
+    message: state.dialogsPage.newMessageText,
+  };
+
+  state.dialogsPage.messages.push(newMessage);
+  state.dialogsPage.newMessageText = '';
+  renderEntireTree(state);
+}
+
+export let updateMessage = (newText) =>{
+
+  state.dialogsPage.newMessageText = newText;
+  renderEntireTree(state);
+}
 
 export default state; 
