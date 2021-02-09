@@ -3,31 +3,27 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import state from './redux/state'
 import { BrowserRouter} from "react-router-dom";
-import { addPost} from "./redux/state"
-import { updateText} from "./redux/state"
-import { addMessage} from "./redux/state"
-import { updateMessage} from "./redux/state"
-import { subscribe } from "./redux/state"
+import store from './redux/state'
 
 let renderEntireTree = (state) =>{
   ReactDOM.render(
     <BrowserRouter>
       <App 
-        state={state} 
-        addPost={addPost} 
-        updateText={updateText} 
-        addMessage={addMessage} 
-        updateMessage={updateMessage} 
+        store={store}
+        state={store.getState()} 
+        addPost={store.addPost} 
+        updateText={store.updateText} 
+        addMessage={store.addMessage} 
+        updateMessage={store.updateMessage} 
         />
     </BrowserRouter>,
     document.getElementById("root")
   );
 }
 
-renderEntireTree(state);
+renderEntireTree(store.getState());
 
-subscribe(renderEntireTree);
+store.subscribe(renderEntireTree);
 
 reportWebVitals();
