@@ -6,14 +6,14 @@ import {addMessageActionCreator, onChangeMessageActionCreator} from "./../../red
 
 const Dialogs = (props) =>{
 
-  let newMessageElement = React.createRef();
+  // let newMessageElement = React.createRef();
 
   let addMessage = () => {
     props.dispatch(addMessageActionCreator())
   };
 
-  let onChangeMessage = () => {
-    let message = newMessageElement.current.value;
+  let onChangeMessage = (event) => {
+    let message = event.target.value;
     props.dispatch(onChangeMessageActionCreator(message));
   };
 
@@ -31,7 +31,7 @@ const Dialogs = (props) =>{
           <div>
             <div>
               <textarea
-                ref={newMessageElement}
+                // ref={newMessageElement}
                 onChange={onChangeMessage}
                 value={props.state.newMessageText}
               />

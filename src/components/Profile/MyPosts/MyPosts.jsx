@@ -5,14 +5,14 @@ import {addPostActionCreator, onPostChangeActionCreator} from "./../../../redux/
 
 const MyPosts = (props) =>{
 
-let newPostElement = React.createRef();
+// let newPostElement = React.createRef();
 
 let addPost = () => {
   props.dispatch(addPostActionCreator()); 
 };
 
-let onPostChange = () => {
-  let data = newPostElement.current.value;
+let onPostChange = (event) => {
+  let data = event.target.value;
   props.dispatch(onPostChangeActionCreator(data));
 };
 
@@ -23,7 +23,7 @@ let onPostChange = () => {
        <div>
          <textarea
            onChange={onPostChange}
-           ref={newPostElement}
+          //  ref={newPostElement}
            value={props.newPostText}
          />
        </div>
