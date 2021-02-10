@@ -25,51 +25,40 @@ let store = {
       ],
     },
   },
-
   _callSubscriber() {
     console.log('State changed')
   },
 
-  addPost () {
-    let newPost = {
-      message: this._state.profilePage.newPostText,
-      likeCounter: 123,
-    };
-
-    this._state.profilePage.posts.push(newPost);
-    this._state.profilePage.newPostText = "";
-    this._callSubscriber(this._state);
-  },
-
-  updateText (newText) {
-    this._state.profilePage.newPostText = newText;
-    this._callSubscriber(this._state);
-  },
-
-  addMessage () {
-    let newMessage = {
-      message: this._state.dialogsPage.newMessageText,
-    };
-
-    this._state.dialogsPage.messages.push(newMessage);
-    this._state.dialogsPage.newMessageText = "";
-    this._callSubscriber(this._state);
-  },
-  updateMessage (newText) {
-    this._state.dialogsPage.newMessageText = newText;
-    this._callSubscriber(this._state);
-  },
-
-  subscribe (observer) {
+  subscribe(observer) {
     this._callSubscriber = observer;
   },
-
-  // set_state (_state) {
-  //   this._state = this.__state
-  // },
-
-  getState () {
+  getState() {
     return this._state
-  }
+  },
+
+  dispatch(action) {
+    if(action.type === "ADD-POST"){
+      let newPost = {
+        message: this._state.profilePage.newPostText,
+        likeCounter: 123,
+      };
+      this._state.profilePage.posts.push(newPost);
+      this._state.profilePage.newPostText = "";
+      this._callSubscriber(this._state);
+    } else if (action.type === "UPDATE-TEXT" ){
+      this._state.profilePage.newPostText = action.newText;
+      this._callSubscriber(this._state);
+    } else if(action.type === "ADD-MESSAGE"){
+      let newMessage = {
+        message: this._state.dialogsPage.newMessageText,
+      };
+      this._state.dialogsPage.messages.push(newMessage);
+      this._state.dialogsPage.newMessageText = "";
+      this._callSubscriber(this._state);
+    } else if( action.type === "UPDATE-MESSAGE"){
+      this._state.dialogsPage.newMessageText = action.newText;
+      this._callSubscriber(this._state);
+    }
+  },
 };
 export default store;

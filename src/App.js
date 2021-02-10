@@ -8,7 +8,6 @@ import Profile from "./components/Profile/Profile";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import store from "./redux/state";
 
 const App = (props) => {
   return (
@@ -21,8 +20,7 @@ const App = (props) => {
           render={() => (
             <Profile
               state={props.state.profilePage}
-              addPost={props.addPost.bind(store)}
-              updateText={props.updateText.bind(store)}
+              dispatch={props.dispatch}
             />
           )}
         />
@@ -31,8 +29,7 @@ const App = (props) => {
           render={() => (
             <Dialogs
               state={props.state.dialogsPage}
-              addMessage={props.addMessage.bind(store)}
-              updateMessage={props.updateMessage.bind(store)}
+              dispatch={props.dispatch}
             />
           )}
         />
