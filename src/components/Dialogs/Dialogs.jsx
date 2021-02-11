@@ -2,11 +2,9 @@ import React from "react";
 import style from "./Dialogs.Module.css"
 import DialogsItem from "./DialogItem/DialogItem"
 import Message from "./Message/Message"
-import {addMessageActionCreator, onChangeMessageActionCreator} from "./../../redux/state"
+import {addMessageActionCreator, onChangeMessageActionCreator} from "./../../redux/dialogsReducer"
 
 const Dialogs = (props) =>{
-
-  // let newMessageElement = React.createRef();
 
   let addMessage = () => {
     props.dispatch(addMessageActionCreator())
@@ -31,7 +29,6 @@ const Dialogs = (props) =>{
           <div>
             <div>
               <textarea
-                // ref={newMessageElement}
                 onChange={onChangeMessage}
                 value={props.state.newMessageText}
               />
