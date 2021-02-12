@@ -2,39 +2,38 @@ import React from "react";
 import style from "./Dialogs.Module.css"
 import DialogsItem from "./DialogItem/DialogItem"
 import Message from "./Message/Message"
-import {addMessageActionCreator, onChangeMessageActionCreator} from "./../../redux/dialogsReducer"
 
 const Dialogs = (props) =>{
 
-  let addMessage = () => {
-    props.dispatch(addMessageActionCreator())
+  let onAddMessage = () => {
+    props.addMessage();
   };
 
   let onChangeMessage = (event) => {
     let message = event.target.value;
-    props.dispatch(onChangeMessageActionCreator(message));
+    props.onChangeMessage(message);
   };
 
     return (
       <div className={style.dialogs}>
         <div className={style.dialogItems}>
-          {props.state.dialogs.map((dialog) => (
+          {props.dialogs.map((dialog) => (
             <DialogsItem name={dialog.name} id={dialog.id} />
           ))}
         </div>
         <div className={style.messages}>
-          {props.state.messages.map((message) => (
+          {props.messages.map((message) => (
             <Message message={message.message} />
           ))}
           <div>
             <div>
               <textarea
                 onChange={onChangeMessage}
-                value={props.state.newMessageText}
+                value={props.newMessageText}
               />
             </div>
             <div>
-              <button onClick={addMessage}>Add sms</button>
+              <button onClick={onAddMessage}>Add sms</button>
             </div>
           </div>
         </div>
