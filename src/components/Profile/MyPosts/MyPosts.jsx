@@ -29,7 +29,7 @@ let onPostChange = (event) => {
      </div>
      <div className={style.item}>
        {props.posts.map((post) => (
-         <Post message={post.message} likeCounter={post.likeCounter} />
+         <Post message={post.message} likeCounter={post.likeCounter} key={post.id}/>
        ))}
      </div>
    </div>

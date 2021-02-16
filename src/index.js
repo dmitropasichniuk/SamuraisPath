@@ -7,7 +7,6 @@ import { BrowserRouter} from "react-router-dom";
 import store from './redux/redux-store'
 import { Provider } from 'react-redux';
 
-let renderEntireTree = (state) =>{
   ReactDOM.render(
     <BrowserRouter>
       <Provider store={store}>
@@ -16,13 +15,13 @@ let renderEntireTree = (state) =>{
     </BrowserRouter>,
     document.getElementById("root")
   );
-}
 
-renderEntireTree(store.getState());
 
-store.subscribe(()=>{
-  let state = store.getState();
-  renderEntireTree(state);
-});
+// renderEntireTree(store.getState());
+
+// store.subscribe(()=>{
+//   let state = store.getState();
+//   renderEntireTree(state);
+// });
 
 reportWebVitals();
