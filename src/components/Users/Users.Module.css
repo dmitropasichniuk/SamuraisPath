@@ -6,3 +6,7 @@
 .items{
   padding: 5px;
 }
+
+.selectedPage{
+  font-weight: bold;
+}

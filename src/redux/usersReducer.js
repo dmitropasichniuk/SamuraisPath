@@ -1,13 +1,14 @@
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
+const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
 
 let initialState = {
-  users: []
-  //   {id:1, imgUrl:"https://i.pinimg.com/236x/74/05/5f/74055f83bfbdc20fdc1f9d1fc116fd26.jpg",followed: true, fullName:'Oleg', status:'I am a boss', location:{city: 'Kiev', country: 'Ukraine'}},
-  //   {id:2, imgUrl:"https://i.pinimg.com/236x/74/05/5f/74055f83bfbdc20fdc1f9d1fc116fd26.jpg", followed: false, fullName:'John', status:'I am big boss', location:{city: 'Vinnitsia', country: 'Ukraine'}},
-  //   {id:3, imgUrl:"https://i.pinimg.com/236x/74/05/5f/74055f83bfbdc20fdc1f9d1fc116fd26.jpg",followed: true, fullName:'Valentine', status:'I am a little boss', location:{city: 'Arizona', country: 'USA'}},
-  // ],
+  users: [],
+  pageSize: 5,
+  totalUsersCount: 0,
+  currentPage: 1,
 };
 
 const usersReducer = (state=initialState, action) =>{
@@ -38,8 +39,22 @@ const usersReducer = (state=initialState, action) =>{
       case SET_USERS:
         return {
           ...state,
-          users: [...state.users, ...action.users],
+          users: action.users,
         };
+
+      case SET_CURRENT_PAGE:
+        return {
+          ...state,
+          currentPage: action.currentPage,
+        };
+        
+      case SET_TOTAL_USERS_COUNT:
+        // alert(action.count);
+        return {
+          ...state,
+          totalUsersCount: action.count,
+        };
+      
 
     default: return state;
   }
@@ -48,6 +63,8 @@ const usersReducer = (state=initialState, action) =>{
 export const followAC = (userId) => ({ type: FOLLOW, userId});
 export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId });
 export const setUsersAC = (users) => ({ type: SET_USERS, users });
+export const setCurrentPageAC = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
+export const setTotalUsersCountAC = (count) => ({ type: SET_TOTAL_USERS_COUNT, count  });
 
 
 export default usersReducer; 
