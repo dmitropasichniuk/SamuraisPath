@@ -69,12 +69,12 @@ const usersReducer = (state=initialState, action) =>{
   }
 }
 
-export const followAC = (userId) => ({ type: FOLLOW, userId});
-export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId });
-export const setUsersAC = (users) => ({ type: SET_USERS, users });
-export const setCurrentPageAC = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
-export const setTotalUsersCountAC = (count) => ({ type: SET_TOTAL_USERS_COUNT, count  });
-export const troggleIsFetchingAC = (value) => ({ type: TROGGLE_IS_FETCHING, value });
+export const follow = (userId) => ({ type: FOLLOW, userId});
+export const unfollow = (userId) => ({ type: UNFOLLOW, userId });
+export const setUsers = (users) => ({ type: SET_USERS, users });
+export const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
+export const setTotalUsersCount = (count) => ({ type: SET_TOTAL_USERS_COUNT, count  });
+export const troggleIsFetching = (value) => ({ type: TROGGLE_IS_FETCHING, value });
 
 
 export default usersReducer; 
