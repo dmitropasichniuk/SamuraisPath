@@ -8,3 +8,12 @@
   margin-left: 50px;
   
 }
+
+.loginBlock{
+  float: right;
+  padding: 5px;
+}
+
+.loginBlock a{
+  color: rgb(255, 255, 255);
+}
